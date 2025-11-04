@@ -148,7 +148,57 @@ There are 99441 orders in the whole dataset - All statuses included. Below is an
 
 <img width="202" height="203" alt="image" src="https://github.com/user-attachments/assets/69ed1704-3c6d-4ef7-896c-01723ac6d180" />
 
-> The actual sales made can only be determined by the deliveries made since we do not have information on when the payment for the products are made. Also, actual sales should be considered when the customer actually received the product.
+> The actual sales made can only be determined by the deliveries made since we do not have information on when the payment for the products are/were made. Also, actual sales should be considered when the customer actually received the product.
+
+Number of items ordered overtime and for all order statuses: 112650. 
+<img width="96" height="52" alt="image" src="https://github.com/user-attachments/assets/53e3bf79-6ba9-40e5-994d-c221081ea354" />
+
+Number of Products offered: 32951.
+<img width="111" height="54" alt="image" src="https://github.com/user-attachments/assets/d9edd87d-c51f-48be-a01d-cef68703912a" />
+
+Total Number of Unique Customers: 96096.
+Unique Repeat Customers: 2997, About 3% of the all customers
+<img width="133" height="54" alt="image" src="https://github.com/user-attachments/assets/18eccee7-70a5-4b1a-9d4e-a661883cbe89" />
+<img width="266" height="60" alt="image" src="https://github.com/user-attachments/assets/cc7d9a09-7477-4ae5-be08-78e780f61944" />
+
+Number of Sellers in the dataset: 3095
+<img width="102" height="56" alt="image" src="https://github.com/user-attachments/assets/1d2cdb76-6a2e-4161-b54a-f08889449920" />
+
+Delivered orders sales: 13,221,498.11, covering ~97% of all sales
+```sql
+SELECT 
+	ROUND(SUM(t1.price), 2) total_sales,
+    ROUND((SUM(t1.price)/(SELECT SUM(price) FROM olist_order_items_dataset))*100, 2) percentage
+FROM olist_order_items_dataset t1
+JOIN olist_orders_dataset t2
+	ON t1.order_id = t2.order_id
+WHERE t2.order_status = "delivered";
+```
+
+##### Yearly Sales
+- 2018 leads in sales made for all delivered orders despite not having all the data for orders made that year.
+```sql
+SELECT 
+	YEAR(t2.order_purchase_timestamp) `year`,
+	ROUND(SUM(t1.price), 2) total_sales
+FROM olist_order_items_dataset t1
+JOIN olist_orders_dataset t2
+	ON t1.order_id = t2.order_id
+WHERE t2.order_status = "delivered"
+GROUP BY YEAR(t2.order_purchase_timestamp)
+ORDER BY ROUND(SUM(t1.price), 2) DESC;
+```
+
+<img width="146" height="92" alt="image" src="https://github.com/user-attachments/assets/7450301f-d90d-4cff-9510-cbe6c40f78bd" />
+- Data quality issues identified during the analysis: 2016 orders data starts from September and goes all the way to December but skips November, which would signify that there were no sales made in November.
+
+
+
+
+
+
+
+
 
 
 
