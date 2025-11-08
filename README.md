@@ -4,9 +4,12 @@
 1. [Overview](#overview)
 2. [Data Cleaning and Understanding](#data-cleaning-and-understanding)
 3. [Analysis](#analysis)
+4. [Power BI Dashboard](#dashboard-building)
 
 ## Overview
 - In this dateset, I go through the performance of an online retail store in Brazil to gather insights on its operation for data the data provided running from a part of 2016 to a bigger part of 2018.
+
+Tools Used: SQL, Power BI
 
 ## Data Cleaning and Understanding
 - I go through each dataset provided and find the following issues in the below listed datasets:
@@ -181,6 +184,13 @@ JOIN olist_orders_dataset t2
 	ON t1.order_id = t2.order_id
 WHERE t2.order_status = "delivered";
 ```
+Other Facts:
+- The highest repeat seller by orders made has done 17 orders. 
+- The largest order contains 21 items.
+- The higest order ever made in the years covered: $13,440.00
+- The biggest seller of all time earning: $226,987.93. For delivered orders only.
+- The largest number of sellers and buyers come from Sao Paulo (SP).
+
 
 ##### Yearly Sales & Other Metrics
 - 2018 leads in sales made for all delivered orders despite not having all the data for orders made that year.
@@ -430,5 +440,23 @@ ORDER BY ROUND(SUM(t1.price), 2) DESC;
 
 
 These were my findings while exploring the olist data set for 2017 full data and 2018&2016 partial data. More analysis can be found in the `Analysis` file attached in this repository. Also see the data cleaning file, `Data Cleaning and Standardization`, attached.
+
+### Dashboard Building
+- Below are screenshots of dashboards providing more insughts on the the findings above.
+- The dashboard was created using Power BI.
+
+##### Financials
+<img width="1445" height="809" alt="image" src="https://github.com/user-attachments/assets/5120198c-e78e-4b75-9afd-7de524db2273" />
+
+##### Seller Demographics
+<img width="1447" height="810" alt="image" src="https://github.com/user-attachments/assets/3a38baca-098d-421c-aa5e-9ca95c2fb27e" />
+
+##### Customer Demographics
+<img width="1450" height="811" alt="image" src="https://github.com/user-attachments/assets/273f9424-06a9-43b2-bc36-95df3c7ca6a7" />
+
+
+- The dashboard Power BI file has been attached in this repository as `Olist Store Dashboard.pbix`.
+
+
 
 This dataset was gotton from [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce/data).
