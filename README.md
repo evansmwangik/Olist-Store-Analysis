@@ -455,7 +455,7 @@ These were my findings while exploring the olist data set for 2017 full data and
 <img width="1450" height="811" alt="image" src="https://github.com/user-attachments/assets/273f9424-06a9-43b2-bc36-95df3c7ca6a7" />
 
 
-- The dashboard Power BI file has been attached in this repository as `Olist Store Dashboard.pbix`.
+- The dashboard Power BI file has been attached in this repository as `Olist Store Dashboard.pbix` [Olist Store Dashboard](https://github.com/evansmwangik/Olist-Store-Analysis/blob/master/Olist%20Store%20Dashboard.pbix).
 
 
 
